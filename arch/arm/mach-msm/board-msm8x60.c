@@ -10194,6 +10194,10 @@ static struct msm_board_data msm8x60_dragon_board_data __initdata = {
 	.gpiomux_cfgs = msm8x60_dragon_gpiomux_cfgs,
 };
 
+static struct msm_board_data msm8x60_tenderloin_board_data __initdata = {
+	.gpiomux_cfgs = msm8x60_tenderloin_gpiomux_cfgs,
+};
+
 static void __init msm8x60_init(struct msm_board_data *board_data)
 {
 	uint32_t soc_platform_version;
@@ -10498,6 +10502,11 @@ static void __init msm8x60_dragon_init(void)
 	msm8x60_init(&msm8x60_dragon_board_data);
 }
 
+static void __init msm8x60_tenderloin_init(void)
+{
+	msm8x60_init(&msm8x60_tenderloin_board_data);
+}
+
 MACHINE_START(MSM8X60_SURF, "QCT MSM8X60 SURF")
 	.map_io = msm8x60_map_io,
 	.reserve = msm8x60_reserve,
@@ -10568,4 +10577,13 @@ MACHINE_START(MSM8X60_DRAGON, "QCT MSM8X60 DRAGON")
 	.init_early = msm8x60_charm_init_early,
 	.restart = msm_restart,
 	.smp = &scorpion_smp_ops,
+MACHINE_END
+
+MACHINE_START(MSM8X60_TENDERLOIN, "QCT MSM8X60 TENDERLOIN")
+	.map_io = msm8x60_map_io,
+	.reserve = msm8x60_reserve,
+	.init_irq = msm8x60_init_irq,
+	.init_machine = msm8x60_tenderloin_init,
+	.timer = &msm_timer,
+	.init_early = msm8x60_charm_init_early,
 MACHINE_END

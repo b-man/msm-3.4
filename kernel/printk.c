@@ -48,6 +48,10 @@
 #define CREATE_TRACE_POINTS
 #include <trace/events/printk.h>
 
+#ifdef CONFIG_PALM_KERNEL_LOG
+#include <linux/palm_klog.h>
+#endif
+
 /*
  * Architectures can override it:
  */
@@ -937,6 +941,9 @@ asmlinkage int vprintk(const char *fmt, va_list args)
 	printed_len += vscnprintf(printk_buf + printed_len,
 				  sizeof(printk_buf) - printed_len, fmt, args);
 
+#ifdef CONFIG_PALM_KERNEL_LOG
+	klog_write(printk_buf, printed_len);
+#endif
 
 	p = printk_buf;
 
