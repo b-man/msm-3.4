@@ -1118,6 +1118,10 @@ static int __init console_setup(char *str)
 	if (!strcmp(str, "ttyb"))
 		strcpy(buf, "ttyS1");
 #endif
+	/* FIXME: very dirty hack to override bootloader console= */
+	if (!strcmp(str, "ttyS0"))
+		strcpy(buf, "tty1");
+
 	for (s = buf; *s; s++)
 		if ((*s >= '0' && *s <= '9') || *s == ',')
 			break;
