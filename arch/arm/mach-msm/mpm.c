@@ -128,6 +128,7 @@ static irqreturn_t msm_mpm_irq(int irq, void *dev_id)
  * MPM Access Functions
  *****************************************************************************/
 
+#if 0
 static void msm_mpm_set(bool wakeset)
 {
 	uint32_t *irqs;
@@ -155,7 +156,9 @@ static void msm_mpm_set(bool wakeset)
 	mb();
 	msm_mpm_send_interrupt();
 }
+#endif
 
+#if 0
 static void msm_mpm_clear(void)
 {
 	int i;
@@ -169,6 +172,7 @@ static void msm_mpm_clear(void)
 	mb();
 	msm_mpm_send_interrupt();
 }
+#endif
 
 /******************************************************************************
  * Interrupt Mapping Functions
@@ -328,6 +332,7 @@ static int msm_mpm_set_irq_type(struct irq_data *d, unsigned int flow_type)
 /******************************************************************************
  * Public functions
  *****************************************************************************/
+#if 0
 int msm_mpm_enable_pin(unsigned int pin, unsigned int enable)
 {
 	uint32_t index = MSM_MPM_IRQ_INDEX(pin);
@@ -344,7 +349,9 @@ int msm_mpm_enable_pin(unsigned int pin, unsigned int enable)
 	spin_unlock_irqrestore(&msm_mpm_lock, flags);
 	return 0;
 }
+#endif
 
+#if 0
 int msm_mpm_set_pin_wake(unsigned int pin, unsigned int on)
 {
 	uint32_t index = MSM_MPM_IRQ_INDEX(pin);
@@ -361,7 +368,9 @@ int msm_mpm_set_pin_wake(unsigned int pin, unsigned int on)
 	spin_unlock_irqrestore(&msm_mpm_lock, flags);
 	return 0;
 }
+#endif
 
+#if 0
 int msm_mpm_set_pin_type(unsigned int pin, unsigned int flow_type)
 {
 	uint32_t index = MSM_MPM_IRQ_INDEX(pin);
@@ -383,7 +392,9 @@ int msm_mpm_set_pin_type(unsigned int pin, unsigned int flow_type)
 	spin_unlock_irqrestore(&msm_mpm_lock, flags);
 	return 0;
 }
+#endif
 
+#if 0
 bool msm_mpm_irqs_detectable(bool from_idle)
 {
 	unsigned long *apps_irq_bitmap;
@@ -414,7 +425,9 @@ bool msm_mpm_irqs_detectable(bool from_idle)
 	}
 	return (bool)__bitmap_empty(apps_irq_bitmap, MSM_MPM_NR_APPS_IRQS);
 }
+#endif
 
+#if 0
 bool msm_mpm_gpio_irqs_detectable(bool from_idle)
 {
 	unsigned long *apps_irq_bitmap = from_idle ?
@@ -423,12 +436,16 @@ bool msm_mpm_gpio_irqs_detectable(bool from_idle)
 	return !__bitmap_intersects(msm_mpm_gpio_irqs_mask, apps_irq_bitmap,
 			MSM_MPM_NR_APPS_IRQS);
 }
+#endif
 
+#if 0
 void msm_mpm_enter_sleep(uint32_t sclk_count, bool from_idle)
 {
 	msm_mpm_set(!from_idle);
 }
+#endif
 
+#if 0
 void msm_mpm_exit_sleep(bool from_idle)
 {
 	unsigned long pending;
@@ -461,6 +478,7 @@ void msm_mpm_exit_sleep(bool from_idle)
 
 	msm_mpm_clear();
 }
+#endif
 
 static int __init msm_mpm_early_init(void)
 {

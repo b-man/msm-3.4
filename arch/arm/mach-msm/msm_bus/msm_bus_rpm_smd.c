@@ -18,6 +18,7 @@
 #include <mach/msm_bus_board.h>
 #include <mach/rpm-smd.h>
 
+#if 0
 /* Stubs for backward compatibility */
 void msm_bus_rpm_set_mt_mask()
 {
@@ -236,3 +237,4 @@ int msm_bus_rpm_hw_init(struct msm_bus_fabric_registration *pdata,
 		pdata->rpm_enabled = 1;
 	return 0;
 }
+#endif

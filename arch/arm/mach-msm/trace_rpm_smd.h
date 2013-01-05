@@ -76,4 +76,6 @@ TRACE_EVENT(rpm_send_message,
 #undef TRACE_INCLUDE_PATH
 #define TRACE_INCLUDE_PATH .
 #define TRACE_INCLUDE_FILE trace_rpm_smd
+#if 0
 #include <trace/define_trace.h>
+#endif

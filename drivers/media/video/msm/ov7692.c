@@ -16,6 +16,7 @@
 #include <linux/uaccess.h>
 #include <linux/miscdevice.h>
 #include <linux/slab.h>
+#include <linux/module.h>
 #include <media/msm_camera.h>
 #include <mach/camera.h>
 #include "ov7692.h"
@@ -47,6 +48,7 @@
 /*============================================================================
 							DATA DECLARATIONS
 ============================================================================*/
+
 /*  96MHz PCLK @ 24MHz MCLK */
 struct reg_addr_val_pair_struct ov7692_init_settings_array[] = {
     {0x12, 0x80},

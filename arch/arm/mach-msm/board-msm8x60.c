@@ -2669,7 +2669,9 @@ unsigned char hdmi_is_primary;
 #define MSM_ION_AUDIO_SIZE	MSM_PMEM_AUDIO_SIZE
 #define MSM_ION_HEAP_NUM	9
 #define MSM_HDMI_PRIM_ION_SF_SIZE MSM_HDMI_PRIM_PMEM_SF_SIZE
+#if 0
 static unsigned msm_ion_sf_size = MSM_ION_SF_SIZE;
+#endif
 #else
 #define MSM_ION_HEAP_NUM	1
 #endif

@@ -52,7 +52,9 @@
 #include "pm-boot.h"
 #include <mach/event_timer.h>
 #define CREATE_TRACE_POINTS
+#if 0
 #include "trace_msm_low_power.h"
+#endif
 /******************************************************************************
  * Debug Definitions
  *****************************************************************************/
@@ -729,6 +731,7 @@ void arch_idle(void)
 	return;
 }
 
+#if 0
 static inline void msm_pm_ftrace_lpm_enter(unsigned int cpu,
 		uint32_t latency, uint32_t sleep_us,
 		uint32_t wake_up,
@@ -751,7 +754,9 @@ static inline void msm_pm_ftrace_lpm_enter(unsigned int cpu,
 		break;
 	}
 }
+#endif
 
+#if 0
 static inline void msm_pm_ftrace_lpm_exit(unsigned int cpu,
 		enum msm_pm_sleep_mode mode,
 		bool success)
@@ -773,6 +778,7 @@ static inline void msm_pm_ftrace_lpm_exit(unsigned int cpu,
 		break;
 	}
 }
+#endif
 
 int msm_pm_idle_prepare(struct cpuidle_device *dev,
 		struct cpuidle_driver *drv, int index)
@@ -879,9 +885,11 @@ int msm_pm_idle_prepare(struct cpuidle_device *dev,
 	if (modified_time_us && !dev->cpu)
 		msm_pm_set_timer(modified_time_us);
 
+#if 0
 	msm_pm_ftrace_lpm_enter(dev->cpu, time_param.latency_us,
 			time_param.sleep_us, time_param.next_event_us,
 			ret);
+#endif
 
 	return ret;
 }
@@ -955,8 +963,10 @@ int msm_pm_idle_enter(enum msm_pm_sleep_mode sleep_mode)
 
 	time = ktime_to_ns(ktime_get()) - time;
 	msm_pm_add_stat(exit_stat, time);
+#if 0
 	msm_pm_ftrace_lpm_exit(smp_processor_id(), sleep_mode,
 				collapsed);
+#endif
 
 	do_div(time, 1000);
 	return (int) time;
